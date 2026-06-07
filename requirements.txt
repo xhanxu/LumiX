@@ -1,0 +1,9 @@
+torch
+transformers
+huggingface-hub
+safetensors
+einops
+Pillow
+PyYAML
+numpy
+sentencepiece

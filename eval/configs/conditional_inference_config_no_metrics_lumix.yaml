@@ -1,0 +1,53 @@
+# LumiX Conditional Inference Configuration
+# Uses real dataset samples and generates missing modalities conditioned on others
+
+# Model configuration (same as standard inference)
+model_type: "flux-dev"
+device: "cuda"
+offload: false
+mixed_precision: "bf16"
+
+# LoRA checkpoint path (same as standard inference)
+# Set this to your downloaded LoRA checkpoint. The model files are not included in
+# this open-source inference package.
+lora_local_path: "checkpoints/lumix/lora_color_enhanced.safetensors"
+
+# LumiX architecture parameters (must match training config)
+rank: 8
+network_alpha: null
+lora_weight: 1.0
+
+# Model blocks to apply LoRA (must match training config)
+double_blocks: null
+single_blocks: null
+
+# Dataset configuration (same as training)
+dataset_config:
+  data_root: "data/suppl_test/split1"
+  captions_dir: "data/suppl_test/split1/captions_blip2"
+  modalities: ['color']
+  img_size: 1536
+  random_ratio: false  # Use consistent cropping for evaluation
+  force_square: false
+  condition_only: true
+  condition_modalities: ['color']
+
+# Conditional inference configuration
+condition_modalities: ['color']  # Modalities to use as conditions (given)
+target_modalities: ['diffuse_reflectance', 'diffuse_illumination', 'depth', 'normal']  # Modalities to generate
+all_modalities: ['diffuse_reflectance', 'diffuse_illumination', 'color', 'depth', 'normal']  # All modalities in order
+
+# Generation parameters
+width: 1536
+height: 1152  # Must be divisible by 16 (1152 = 72 * 16)
+num_steps: 50
+guidance: 3.0
+true_gs: 2.5
+seed: -1
+num_images_per_prompt: 3
+neg_prompt: "blurry, low quality, artifacts, distorted, noisy, pixelated, jpeg artifacts"
+
+# Evaluation parameters
+num_samples: 4  # Number of dataset samples to evaluate
+save_path: "conditional_inference_results/color_to_all_50_3.0_2.5_suppl_test_1536_1152_-1x3_lumix_test"
+

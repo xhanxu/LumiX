@@ -1,0 +1,64 @@
+# LumiX Inference Configuration
+# For the 5-modality Hypersim model using Query Broadcast Attention (QBA)
+# and Tensor LoRA adapters.
+
+# Model configuration
+model_type: "flux-dev"  # or "flux-schnell"
+device: "cuda"
+offload: false
+mixed_precision: "bf16"  # Match training: fp16, bf16, or no
+
+# LoRA checkpoint path
+# Set this to your downloaded LoRA checkpoint. The model files are not included in
+# this open-source inference package.
+lora_local_path: "checkpoints/lumix/lora_color_enhanced.safetensors"
+
+# LumiX architecture parameters (must match training config)
+rank: 8         # Main rank for tensor train decomposition
+network_alpha: null  # null = auto-calculate from rank
+lora_weight: 1.0     # LoRA output scaling factor
+
+# Model blocks to apply LoRA (must match training config)
+double_blocks: null  # null for all 19 blocks
+single_blocks: null  # null for all 38 blocks
+
+# Output modalities (5 modalities for Hypersim)
+num_modalities: 5
+modalities:
+  - diffuse_reflectance
+  - diffuse_illumination
+  - color
+  - depth
+  - normal
+
+# Generation parameters - DETAILED TUNING GUIDE
+width: 512          # Image width (64-2048, must be multiple of 8)
+height: 512         # Image height (64-2048, must be multiple of 8)
+num_steps: 50       # Denoising steps (20-100, higher = better quality but slower)
+                    # 50=default, 75=high quality, 100=max quality
+guidance: 3.5       # Classifier-free guidance scale (1.0-7.0)
+                    # 3.0-4.0: Natural results, less artifacts
+                    # 4.0-5.0: Balanced (recommended)
+                    # 5.0-7.0: Strong prompt adherence, more artifacts
+true_gs: 3.0        # True guidance scale for CFG (2.0-5.0)
+                    # Lower (2.0-3.0): Fewer artifacts, more natural
+                    # Higher (3.5-4.0): More prompt adherence, more artifacts
+seed: -1            # Random seed (0-999999, -1 for random)
+num_images_per_prompt: 3  # How many variations per prompt (1-10)
+
+# Quality optimization - negative prompt to avoid common issues
+neg_prompt: "blurry, low quality, artifacts, distorted, noisy, pixelated, jpeg artifacts"  # Guide away from unwanted features
+
+# Save configuration
+save_path: "inference_results/results_lumix_random_prompt_supp_512_512_50_3.5_3.0_-1x3_test"
+save_separate: true  # Save each modality to separate folder
+save_combined: true  # Save combined grid image
+
+# ========== Prompt ==========
+inference_prompts:
+  - "an astronaut sitting on a couch in a cozy living room with warm lighting"
+  - "a glass greenhouse where trees grow through futuristic metal furniture"
+  - "a cat sleeping on a stack of ancient scrolls inside a sunlit library"
+  - "an astronaut inside a bedroom with soft fabric curtains and neon reflections"
+
+
