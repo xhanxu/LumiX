@@ -36,19 +36,19 @@ pip install torch transformers huggingface-hub safetensors einops Pillow PyYAML 
 
 ## Checkpoints 📦
 
-LumiX checkpoints will be released on [Hugging Face](https://huggingface.co/hanx/lumix):
+LumiX checkpoints are hosted on [Hugging Face](https://huggingface.co/hanx/LumiX_ckp):
 
 Download the LumiX LoRA checkpoint and place it under `checkpoints/lumix/`:
 
 ```bash
-huggingface-cli download hanx/lumix0 lora_color_enhanced.safetensors \
+huggingface-cli download hanx/LumiX_ckp lumix.safetensors \
   --local-dir checkpoints/lumix
 ```
 
 Then update the config if your filename or path differs:
 
 ```yaml
-lora_local_path: "checkpoints/lumix/lora_color_enhanced.safetensors"
+lora_local_path: "checkpoints/lumix/lumix.safetensors"
 ```
 
 Recommended local layout:
@@ -56,7 +56,7 @@ Recommended local layout:
 ```text
 checkpoints/
   lumix/
-    lora_color_enhanced.safetensors
+    lumix.safetensors
 ```
 
 The base FLUX and text encoder weights are loaded through Hugging Face by `src/flux/util.py`. You can also point environment variables such as `FLUX_DEV` and `AE` to local checkpoints if you already have them cached:
@@ -152,7 +152,7 @@ The LumiX training code will be released in a future update, including scripts a
 
 ## Notes 💡
 
-- Checkpoint files are hosted on [Hugging Face](https://huggingface.co/hanx/lumix0). Put them in `checkpoints/lumix/`, or change `lora_local_path`.
+- Checkpoint files are hosted on [Hugging Face](https://huggingface.co/hanx/LumiX_ckp). Put `lumix.safetensors` in `checkpoints/lumix/`, or change `lora_local_path`.
 - The default configs use `device: "cuda"`. Change this if you want a specific GPU such as `cuda:0`.
 - Conditional inference expects images under modality folders such as `color/`, with matching captions in `captions_blip2/`.
 
