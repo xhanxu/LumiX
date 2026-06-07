@@ -2,6 +2,7 @@
 
 Official code for **LumiX: Structured and Coherent Text-to-Intrinsic Generation**.
 
+🌐 Project page: [https://xhanxu.github.io/lumix.github.io/](https://xhanxu.github.io/lumix.github.io/)  
 📄 Paper: [arXiv:2512.02781](https://arxiv.org/abs/2512.02781)  
 🏆 Accepted to **CVPR 2026**
 
