@@ -1,27 +1,17 @@
-# LumiX ✨
+# LumiX [CVPR 2026] ✨
 
 Official code for **LumiX: Structured and Coherent Text-to-Intrinsic Generation**.
 
-📄 Paper: [arXiv:2512.02781](https://arxiv.org/abs/2512.02781)  
-🏆 Accepted to **CVPR 2026**
+🌐 [Project page](https://xhanxu.github.io/lumix.github.io/) 
+📄 [Paper](https://arxiv.org/abs/2512.02781)  
 
-LumiX predicts aligned visual modalities such as:
+LumiX is a structured diffusion framework for coherent text-to-intrinsic generation.
+Given a text prompt, LumiX jointly generates a comprehensive set of intrinsic maps,
+including diffuse reflectance, diffuse illumination, normal, depth, and final color.
+These outputs form an aligned and physically consistent description of the same
+underlying scene, enabling unified generation of multiple intrinsic properties from
+text and image-conditioned intrinsic decomposition within a single framework.
 
-- diffuse reflectance
-- diffuse illumination
-- color
-- depth
-- normal
-
-LumiX is built from two pieces:
-
-- **QBA, Query Broadcast Attention** 🛰️  
-  The color query is broadcast across modalities so generated outputs stay spatially aligned.
-
-- **Tensor LoRA** 🧩  
-  A compact cross-modality LoRA adapter that lets each output modality aggregate information from all modalities through a tensorized low-rank structure.
-
-Model checkpoints are not included in this repository.
 
 ## Install 🛠️
 
@@ -160,7 +150,7 @@ training/
 
 ## Training Code 🚀
 
-The LumiX training code will be released in a future update, including scripts and configs for training the QBA + Tensor LoRA adapters.
+The LumiX training code will be released in a future update, including scripts and configs.
 
 ## Notes 💡
 
