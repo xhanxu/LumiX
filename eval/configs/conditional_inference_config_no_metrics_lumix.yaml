@@ -10,7 +10,7 @@ mixed_precision: "bf16"
 # LoRA checkpoint path (same as standard inference)
 # Set this to your downloaded LoRA checkpoint. The model files are not included in
 # this open-source inference package.
-lora_local_path: "checkpoints/lumix/lora_color_enhanced.safetensors"
+lora_local_path: "checkpoints/lumix/lumix.safetensors"
 
 # LumiX architecture parameters (must match training config)
 rank: 8
@@ -23,8 +23,8 @@ single_blocks: null
 
 # Dataset configuration (same as training)
 dataset_config:
-  data_root: "data/suppl_test/split1"
-  captions_dir: "data/suppl_test/split1/captions_blip2"
+  data_root: "path-to-dataset-root"  # Set this to your dataset root directory
+  captions_dir: "path-to-captions"  # Set this to your captions directory
   modalities: ['color']
   img_size: 1536
   random_ratio: false  # Use consistent cropping for evaluation
@@ -32,10 +32,6 @@ dataset_config:
   condition_only: true
   condition_modalities: ['color']
 
-# Conditional inference configuration
-condition_modalities: ['color']  # Modalities to use as conditions (given)
-target_modalities: ['diffuse_reflectance', 'diffuse_illumination', 'depth', 'normal']  # Modalities to generate
-all_modalities: ['diffuse_reflectance', 'diffuse_illumination', 'color', 'depth', 'normal']  # All modalities in order
 
 # Generation parameters
 width: 1536
@@ -44,10 +40,8 @@ num_steps: 50
 guidance: 3.0
 true_gs: 2.5
 seed: -1
-num_images_per_prompt: 3
 neg_prompt: "blurry, low quality, artifacts, distorted, noisy, pixelated, jpeg artifacts"
 
 # Evaluation parameters
 num_samples: 4  # Number of dataset samples to evaluate
-save_path: "conditional_inference_results/color_to_all_50_3.0_2.5_suppl_test_1536_1152_-1x3_lumix_test"
-
+save_path: "path-to-save-results/conditional_inference_results"

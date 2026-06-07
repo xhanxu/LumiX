@@ -97,21 +97,19 @@ Set:
 
 ```yaml
 dataset_config:
-  data_root: "data/suppl_test/split1"
-  captions_dir: "data/suppl_test/split1/captions_blip2"
-  condition_modalities: ["color"]
+  data_root: "path-to-dataset-root"  # Set this to your dataset root directory
+  captions_dir: "path-to-captions"  # Set this to your captions directory
 
-condition_modalities: ["color"]
-target_modalities: ["diffuse_reflectance", "diffuse_illumination", "depth", "normal"]
+save_path: "path-to-save-results/conditional_inference_results"
 ```
 
 Then run:
 
 ```bash
-bash eval/run_hypersim_inference.sh
+python eval/eval_lumix_hypersim_inference_condition_no_metrics.py \
+    --config eval/configs/conditional_inference_config_no_metrics_lumix.yaml
 ```
 
-The default shell script runs conditional inference from color to the remaining modalities. To run text-to-multimodal inference instead, uncomment the first Python command in `eval/run_hypersim_inference.sh`.
 
 ## Repository Layout 🗂️
 
@@ -154,7 +152,7 @@ The LumiX training code will be released in a future update, including scripts a
 
 - Checkpoint files are hosted on [Hugging Face](https://huggingface.co/hanx/LumiX_ckp). Put `lumix.safetensors` in `checkpoints/lumix/`, or change `lora_local_path`.
 - The default configs use `device: "cuda"`. Change this if you want a specific GPU such as `cuda:0`.
-- Conditional inference expects images under modality folders such as `color/`, with matching captions in `captions_blip2/`.
+- Conditional inference expects images under modality folders with matching captions.
 
 ## Citation 📚
 

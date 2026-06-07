@@ -2,14 +2,14 @@
 
 Place LumiX LoRA checkpoints here.
 
-Model checkpoints will be released on Hugging Face:
+Model checkpoints are hosted on Hugging Face:
 
-https://huggingface.co/hanx/lumix0
+https://huggingface.co/hanx/LumiX_ckp
 
 Example download command:
 
 ```bash
-huggingface-cli download hanx/lumix0 lora_color_enhanced.safetensors \
+huggingface-cli download hanx/LumiX_ckp lumix.safetensors \
   --local-dir checkpoints/lumix
 ```
 
@@ -18,13 +18,13 @@ Recommended layout:
 ```text
 checkpoints/
   lumix/
-    lora_color_enhanced.safetensors
+    lumix.safetensors
 ```
 
 Then update the YAML config:
 
 ```yaml
-lora_local_path: "checkpoints/lumix/lora_color_enhanced.safetensors"
+lora_local_path: "checkpoints/lumix/lumix.safetensors"
 ```
 
 Large checkpoint files are hosted on Hugging Face and are intentionally not committed to this repository.
