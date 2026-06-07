@@ -36,9 +36,7 @@ pip install torch transformers huggingface-hub safetensors einops Pillow PyYAML 
 
 ## Checkpoints 📦
 
-LumiX checkpoints will be released on Hugging Face:
-
-👉 [https://huggingface.co/hanx/lumix](https://huggingface.co/hanx/lumix)
+LumiX checkpoints will be released on [Hugging Face](https://huggingface.co/hanx/lumix):
 
 Download the LumiX LoRA checkpoint and place it under `checkpoints/lumix/`:
 
