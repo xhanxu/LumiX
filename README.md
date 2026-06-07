@@ -73,14 +73,14 @@ models/
 Edit:
 
 ```text
-eval/configs/lumix_hypersim_inference.yaml
+eval/configs/lumix_inference.yaml
 ```
 
 Then run:
 
 ```bash
-python eval/eval_lumix_hypersim_inference.py \
-  --config eval/configs/lumix_hypersim_inference.yaml
+python eval/eval_lumix_inference.py \
+  --config eval/configs/lumix_inference.yaml
 ```
 
 This generates all five modalities from text prompts listed in the config.
@@ -90,7 +90,7 @@ This generates all five modalities from text prompts listed in the config.
 Edit:
 
 ```text
-eval/configs/conditional_inference_config_no_metrics_lumix.yaml
+eval/configs/lumix_conditional_inference.yaml
 ```
 
 Set:
@@ -106,8 +106,8 @@ save_path: "path-to-save-results/conditional_inference_results"
 Then run:
 
 ```bash
-python eval/eval_lumix_hypersim_inference_condition_no_metrics.py \
-    --config eval/configs/conditional_inference_config_no_metrics_lumix.yaml
+python eval/eval_lumix_conditional_inference.py \
+    --config eval/configs/lumix_conditional_inference.yaml
 ```
 
 
@@ -115,18 +115,19 @@ python eval/eval_lumix_hypersim_inference_condition_no_metrics.py \
 
 ```text
 eval/
-  run_hypersim_inference.sh
-  eval_lumix_hypersim_inference.py
-  eval_lumix_hypersim_inference_condition_no_metrics.py
+  run_lumix_inference.sh
+  eval_lumix_inference.py
+  eval_lumix_conditional_inference.py
   configs/
-    lumix_hypersim_inference.yaml
-    conditional_inference_config_no_metrics_lumix.yaml
+    lumix_inference.yaml
+    lumix_conditional_inference.yaml
 
 src/flux/
   model.py
   sampling.py
   util.py
   modules/
+    layers.py
     layers_lumix.py
 
 checkpoints/

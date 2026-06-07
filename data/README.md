@@ -17,5 +17,5 @@ data/
 Update `dataset_config.data_root` and `dataset_config.captions_dir` in:
 
 ```text
-eval/configs/conditional_inference_config_no_metrics_lumix.yaml
+eval/configs/lumix_conditional_inference.yaml
 ```

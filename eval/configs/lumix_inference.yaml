@@ -1,5 +1,5 @@
 # LumiX Inference Configuration
-# For the 5-modality Hypersim model using Query Broadcast Attention (QBA)
+# For the 5-modality LumiX model using Query Broadcast Attention (QBA)
 # and Tensor LoRA adapters.
 
 # Model configuration
@@ -59,4 +59,3 @@ inference_prompts:
   - "a glass greenhouse where trees grow through futuristic metal furniture"
   - "a cat sleeping on a stack of ancient scrolls inside a sunlit library"
   - "an astronaut inside a bedroom with soft fabric curtains and neon reflections"
-
